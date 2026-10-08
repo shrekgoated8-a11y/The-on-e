@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACCESS GRANTED // DAD</title>
+<style>
+:root{
+  --green:#00ff88; --green2:#00c96b; --bg:#020604; --panel:#07110c;
+  --text:#d8ffe9; --muted:#78a98d; --red:#ff3864;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:radial-gradient(circle at 50% -10%,#0c2417 0,#020604 45%,#010302 100%);
+  color:var(--text);font-family:"Courier New",monospace;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,#fff 4px);
+  z-index:10;
+}
+#matrix{position:fixed;inset:0;z-index:-1;opacity:.14}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;
+  padding:18px 6vw;background:rgba(1,5,3,.75);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,255,136,.2)
+}
+.logo{color:var(--green);font-weight:bold;letter-spacing:2px}
+.status{color:#9cffc5;font-size:12px}
+.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);margin-right:7px}
+main{min-height:100vh}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:100px 20px 50px}
+.terminal{
+  width:min(900px,100%);border:1px solid rgba(0,255,136,.35);background:rgba(3,12,7,.86);
+  box-shadow:0 0 50px rgba(0,255,136,.08),inset 0 0 40px rgba(0,255,136,.03);
+  border-radius:12px;overflow:hidden;text-align:left
+}
+.termbar{padding:12px 16px;border-bottom:1px solid rgba(0,255,136,.2);display:flex;gap:7px}
+.dot{width:10px;height:10px;border-radius:50%;background:#244b36}.dot:first-child{background:#ff5f57}.dot:nth-child(2){background:#ffbd2e}.dot:nth-child(3){background:#28c840}
+.terminal-body{padding:35px}
+.prompt{color:var(--green);font-size:clamp(12px,2vw,16px)}
+h1{font-size:clamp(42px,9vw,92px);margin:22px 0 5px;color:white;text-shadow:0 0 15px rgba(0,255,136,.7);letter-spacing:5px}
+.glitch{animation:glitch 2.8s infinite}
+@keyframes glitch{0%,90%,100%{transform:none}92%{transform:translate(2px,-1px)}94%{transform:translate(-2px,1px)}96%{transform:translate(1px,1px)}}
+.sub{color:var(--green);font-size:clamp(15px,2.4vw,22px)}
+.cursor{animation:blink .8s infinite}@keyframes blink{50%{opacity:0}}
+.scan{margin-top:30px;border:1px solid rgba(0,255,136,.2);padding:18px;background:#020a05}
+.line{margin:7px 0;color:#a7dabb}.ok{color:var(--green)}.warn{color:#ffd166}
+.progress{height:5px;background:#0b2416;margin-top:14px;overflow:hidden}.progress span{display:block;height:100%;width:100%;background:var(--green);box-shadow:0 0 14px var(--green);animation:load 2.4s ease-out}@keyframes load{from{width:0}to{width:100%}}
+button{
+  margin-top:28px;background:transparent;color:var(--green);border:1px solid var(--green);
+  padding:14px 22px;font:inherit;cursor:pointer;transition:.2s
+}
+button:hover{background:var(--green);color:#001a0b;box-shadow:0 0 25px rgba(0,255,136,.35)}
+section{padding:90px 7vw}
+.wrap{max-width:1050px;margin:auto}
+.section-title{color:var(--green);font-size:14px;letter-spacing:3px;margin-bottom:12px}
+h2{font-size:clamp(30px,5vw,55px);margin:0 0 30px;color:white}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid rgba(0,255,136,.2);padding:25px;min-height:170px;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:var(--green);box-shadow:0 12px 35px rgba(0,255,136,.08)}
+.card .num{font-size:28px;color:var(--green);margin-bottom:15px}.card h3{margin:0 0 10px;color:#fff}.card p{color:var(--muted);line-height:1.6}
+.message{border-left:3px solid var(--green);padding:25px;background:linear-gradient(90deg,rgba(0,255,136,.07),transparent);font-size:clamp(17px,2.5vw,23px);line-height:1.8}
+.reveal{display:none;margin-top:22px;color:#fff;line-height:1.8}.reveal.show{display:block;animation:fade .7s}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+footer{padding:35px 20px;text-align:center;border-top:1px solid rgba(0,255,136,.15);color:#47765a;font-size:12px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}.terminal-body{padding:24px}nav{padding:15px 5vw}.status{display:none}}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<nav><div class="logo">DAD_SECURE // v1.0</div><div class="status"><i></i>SYSTEM ONLINE</div></nav>
+
+<main>
+<section class="hero">
+  <div class="terminal">
+    <div class="termbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="terminal-body">
+      <div class="prompt">root@birthday-server:~$ ./run_surprise.sh</div>
+      <h1 class="glitch">ACCESS GRANTED</h1>
+      <div class="sub">IDENTITY CONFIRMED: DAD<span class="cursor">_</span></div>
+      <div class="scan">
+        <div class="line">[<span class="ok">OK</span>] Initialising birthday protocol...</div>
+        <div class="line">[<span class="ok">OK</span>] Scanning for awesome dads...</div>
+        <div class="line">[<span class="ok">OK</span>] Threat level: <span class="warn">TOO AWESOME</span></div>
+        <div class="line">[<span class="ok">OK</span>] Birthday status: <span class="ok">ACTIVE</span></div>
+        <div class="progress"><span></span></div>
+      </div>
+      <button onclick="document.getElementById('message').scrollIntoView({behavior:'smooth'})">ENTER SECURE AREA →</button>
+    </div>
+  </div>
+</section>
+
+<section id="message">
+<div class="wrap">
+  <div class="section-title">// ENCRYPTED MESSAGE</div>
+  <h2>For the man behind the system.</h2>
+  <div class="message">
+    Happy Birthday, Dad.<br><br>
+    You are officially the most important person on this network.
+    Thank you for everything you do, for always being there, and for being someone I can count on.
+    I hope your day is filled with good memories, good food, and absolutely zero system errors.
+    <br><br>
+    <span style="color:var(--green)">— Your favourite hacker</span>
+  </div>
+  <button onclick="document.getElementById('secret').classList.toggle('show')">DECRYPT BIRTHDAY FILE</button>
+  <div id="secret" class="reveal">
+    > Decryption complete.<br>
+    > File: DAD_IS_THE_BEST.txt<br>
+    > Classification: TOP SECRET<br>
+    > Result: 100% LEGEND.<br><br>
+    No exploit was required. The password was simply: <strong style="color:var(--green)">LOVE_YOU_DAD</strong>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+  <div class="section-title">// SYSTEM REPORT</div>
+  <h2>Dad.exe is running perfectly.</h2>
+  <div class="grid">
+    <div class="card"><div class="num">01</div><h3>Firewall</h3><p>Protects the people he cares about. Status: UNBREAKABLE.</p></div>
+    <div class="card"><div class="num">02</div><h3>Processor</h3><p>Powered by experience, patience and an unlimited supply of dad energy.</p></div>
+    <div class="card"><div class="num">03</div><h3>Security</h3><p>Maximum level. Nobody gets through the Dad Firewall.</p></div>
+  </div>
+</div>
+</section>
+</main>
+<footer>CONNECTION SECURED • BIRTHDAY PROTOCOL COMPLETE • © 2026 DAD_SECURE</footer>
+
+<script>
+const c=document.getElementById("matrix"),ctx=c.getContext("2d");
+function resize(){c.width=innerWidth;c.height=innerHeight} resize(); addEventListener("resize",resize);
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>/"; let fs=15, cols=Math.floor(innerWidth/fs), drops=Array(cols).fill(1);
+setInterval(()=>{
+ ctx.fillStyle="rgba(2,6,4,.08)";ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle="#00ff88";ctx.font=fs+"px monospace";
+ for(let i=0;i<drops.length;i++){let t=chars[Math.floor(Math.random()*chars.length)];ctx.fillText(t,i*fs,drops[i]*fs);if(drops[i]*fs>c.height&&Math.random()>.975)drops[i]=0;drops[i]++}
+},55);
+</script>
+</body>
+</html>
